@@ -68,7 +68,7 @@ function signup(){
     return;
   }
 
-  users[mobile]={name,pass};
+  users[mobile] = pass;
   localStorage.setItem("users",JSON.stringify(users));
   alert("Signup successful! Now login.");
   location.href="index.html";
