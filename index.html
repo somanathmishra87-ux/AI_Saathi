@@ -6,31 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
 
-/* HALF IMAGE + HALF BLUE BACKGROUND */
 body{
   min-height:100vh;
+  background:#0a1f44;
   color:#fff;
-  background:
-    linear-gradient(
-      to right,
-      rgba(0,40,120,0.75) 50%,
-      rgba(0,40,120,0.95) 50%
-    ),
-    url('https://images.unsplash.com/photo-1581091012184-5c7c7c6f9f84')
-    no-repeat left center / 50% 100%;
 }
 
 /* HEADER */
 header{
-  background:#f2f6ff;
-  padding:12px 16px;
+  background:#eaf1ff;
+  padding:12px 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -48,26 +35,39 @@ header button{
 /* HERO */
 .hero{
   display:flex;
+  min-height:85vh;
+}
+
+/* LEFT BLUE */
+.left{
+  flex:1;
+  background:#0a1f44;
+  display:flex;
   justify-content:center;
   align-items:center;
-  min-height:80vh;
 }
+
+/* RIGHT ROBOT IMAGE */
+.right{
+  flex:1;
+  background:url('https://i.imgur.com/7sYzJYV.jpg') no-repeat center center/cover;
+}
+
+/* CARD */
 .card{
-  background:rgba(0,0,0,0.6);
+  background:rgba(0,0,0,0.7);
   padding:30px;
-  border-radius:16px;
+  border-radius:14px;
   max-width:360px;
   text-align:center;
 }
-.card h1{margin-bottom:6px;}
+.card h1{margin-bottom:10px;}
 .card h3{margin-bottom:10px;}
-.card p{
-  font-size:14px;
-  line-height:1.5;
-}
+.card p{font-size:14px;line-height:1.4;}
+
 .card button{
   width:100%;
-  margin-top:14px;
+  margin-top:12px;
   padding:12px;
   border:none;
   border-radius:8px;
@@ -90,7 +90,7 @@ footer{
   display:none;
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.7);
+  background:rgba(0,0,0,0.6);
   justify-content:center;
   align-items:center;
 }
@@ -98,25 +98,23 @@ footer{
   background:#fff;
   color:#000;
   padding:20px;
-  border-radius:12px;
+  border-radius:10px;
   width:300px;
 }
-.modal-box h3{
-  text-align:center;
-  margin-bottom:10px;
-}
+.modal-box h3{text-align:center;margin-bottom:10px;}
 .modal-box input{
   width:100%;
   padding:8px;
   margin:6px 0;
 }
-.passbox{
+.eye{
   position:relative;
 }
-.passbox span{
+.eye span{
   position:absolute;
   right:10px;
-  top:10px;
+  top:50%;
+  transform:translateY(-50%);
   cursor:pointer;
 }
 .modal-box button{
@@ -133,6 +131,16 @@ footer{
   color:red;
   cursor:pointer;
 }
+
+/* LEARN SECTION */
+#learn{
+  display:none;
+  background:#fff;
+  color:#000;
+  padding:25px;
+}
+#learn h2{margin-bottom:8px;}
+#learn p{margin-bottom:6px;}
 </style>
 </head>
 
@@ -147,18 +155,32 @@ footer{
 </header>
 
 <div class="hero">
-  <div class="card">
-    <h1>AI Saathi</h1>
-    <h3>AI का ज्ञान, सबके लिए</h3>
-    <p>
-      Learn AI from basics to advanced.<br>
-      Get help with any task.<br>
-      Suitable for everyone – from children to elderly.
-    </p>
-    <button class="primary" onclick="openSignup()">Get Started →</button>
-    <button class="secondary">Learn More</button>
+  <div class="left">
+    <div class="card">
+      <h1>AI Saathi</h1>
+      <h3>AI ka gyaan, sabke liye</h3>
+      <p>
+        Learn AI from basics to advanced.<br>
+        Get help with any task.<br>
+        Suitable for everyone – from children to elderly.
+      </p>
+      <button class="primary" onclick="openSignup()">Get Started →</button>
+      <button class="secondary">Learn More</button>
+    </div>
   </div>
+  <div class="right"></div>
 </div>
+
+<section id="learn">
+  <h2>AI kya hai?</h2>
+  <p>AI computer ko insan jaise sochna sikhata hai.</p>
+
+  <h2>AI se kya kar sakte hain?</h2>
+  <p>✔ Letter</p>
+  <p>✔ Resume</p>
+  <p>✔ Homework</p>
+  <p>✔ Business ideas</p>
+</section>
 
 <footer>
   Created by : Mr Somanath Mishra
@@ -168,10 +190,11 @@ footer{
 <div class="modal" id="signupModal">
   <div class="modal-box">
     <h3>Sign Up</h3>
-    <input id="smobile" placeholder="10 Digit Mobile Number">
-    <div class="passbox">
+    <input id="sname" placeholder="Full Name">
+    <input id="smobile" placeholder="10 digit Mobile">
+    <div class="eye">
       <input id="spass" type="password" placeholder="Password">
-      <span onclick="togglePass('spass',this)">👁️</span>
+      <span onclick="toggle('spass')">👁</span>
     </div>
     <button onclick="signup()">Create Account</button>
     <div class="close" onclick="closeAll()">Close</div>
@@ -183,9 +206,9 @@ footer{
   <div class="modal-box">
     <h3>Login</h3>
     <input id="lmobile" placeholder="Mobile Number">
-    <div class="passbox">
+    <div class="eye">
       <input id="lpass" type="password" placeholder="Password">
-      <span onclick="togglePass('lpass',this)">👁️</span>
+      <span onclick="toggle('lpass')">👁</span>
     </div>
     <button onclick="login()">Login</button>
     <div class="close" onclick="closeAll()">Close</div>
@@ -193,76 +216,48 @@ footer{
 </div>
 
 <script>
-const KEY = "AI_SAATHI_USERS_FINAL";
-
 function openSignup(){signupModal.style.display="flex";}
 function openLogin(){loginModal.style.display="flex";}
-function closeAll(){
-  signupModal.style.display="none";
-  loginModal.style.display="none";
+function closeAll(){signupModal.style.display=loginModal.style.display="none";}
+
+function toggle(id){
+  let x=document.getElementById(id);
+  x.type = x.type==="password" ? "text" : "password";
 }
 
-function togglePass(id,el){
-  const i=document.getElementById(id);
-  if(i.type==="password"){
-    i.type="text";
-    el.textContent="🙈";
-  }else{
-    i.type="password";
-    el.textContent="👁️";
-  }
-}
-
-function validMobile(m){
-  return /^[0-9]{10}$/.test(m);
-}
 function validPassword(p){
   return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/.test(p);
 }
 
-function getUsers(){
-  return JSON.parse(localStorage.getItem(KEY)||"{}");
-}
-function saveUsers(u){
-  localStorage.setItem(KEY,JSON.stringify(u));
-}
-
 function signup(){
-  const m=smobile.value.trim();
-  const p=spass.value.trim();
+  let name=sname.value.trim();
+  let mobile=smobile.value.trim();
+  let pass=spass.value;
 
-  if(!validMobile(m)){
-    alert("Mobile number 10 digit ka hona chahiye");
-    return;
-  }
-  if(!validPassword(p)){
-    alert("Password minimum 8 characters (letter + number + symbol)");
-    return;
-  }
+  if(!/^\d{10}$/.test(mobile)){alert("Mobile must be 10 digits");return;}
+  if(!validPassword(pass)){alert("Password must be 8+ with letter, number & symbol");return;}
 
-  const u=getUsers();
-  if(u[m]){
-    alert("User already exists");
-    return;
-  }
+  let users=JSON.parse(localStorage.getItem("users")||"{}");
+  if(users[mobile]){alert("User already exists");return;}
 
-  u[m]=p;
-  saveUsers(u);
-  alert("Signup successful! Ab login karo.");
+  users[mobile]={name,pass};
+  localStorage.setItem("users",JSON.stringify(users));
+  alert("Signup successful");
   closeAll();
 }
 
 function login(){
-  const m=lmobile.value.trim();
-  const p=lpass.value.trim();
+  let mobile=lmobile.value.trim();
+  let pass=lpass.value;
+  let users=JSON.parse(localStorage.getItem("users")||"{}");
 
-  const u=getUsers();
-  if(!u[m] || u[m]!==p){
-    alert("Invalid mobile number or password");
+  if(!users[mobile] || users[mobile].pass!==pass){
+    alert("Invalid mobile or password");
     return;
   }
 
-  alert("Login successful 🎉 Welcome to AI Saathi");
+  alert("Welcome "+users[mobile].name);
+  document.getElementById("learn").style.display="block";
   closeAll();
 }
 </script>
