@@ -1,88 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>AI Saathi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  display:flex;
-  min-height:100vh;
-}
-.left{
-  flex:1;
-  background:url('robot-ai.jpg') center/contain no-repeat;
-  background-color:#0b4fa3;
-}
-.right{
-  flex:1;
-  background:#0b4fa3;
-  color:#fff;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.card{
-  background:rgba(0,0,0,0.6);
-  padding:30px;
-  border-radius:12px;
-  width:300px;
-  text-align:center;
-}
-input,button{
-  width:100%;
-  padding:10px;
-  margin:6px 0;
-}
-button{
-  background:#1e90ff;
-  border:none;
-  color:#fff;
-  border-radius:6px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>AI Saathi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      background: linear-gradient(90deg, #0b3c8a 50%, #0a5fd8 50%);
+    }
+
+    header{
+      background:#ffffff;
+      padding:12px 16px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    header h2{
+      color:#0a5fd8;
+      font-size:20px;
+    }
+
+    header .btns a{
+      text-decoration:none;
+      margin-left:10px;
+      background:#0a5fd8;
+      color:#fff;
+      padding:6px 12px;
+      border-radius:6px;
+      font-size:14px;
+    }
+
+    .main{
+      flex:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .card{
+      background:rgba(0,0,0,0.65);
+      color:#fff;
+      padding:28px;
+      border-radius:14px;
+      max-width:360px;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .card h1{
+      margin-bottom:6px;
+    }
+
+    .card h3{
+      margin-bottom:12px;
+      font-weight:normal;
+    }
+
+    .card p{
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .card button{
+      width:100%;
+      padding:12px;
+      margin-top:14px;
+      border:none;
+      border-radius:8px;
+      font-size:15px;
+      cursor:pointer;
+    }
+
+    .primary{
+      background:#0a5fd8;
+      color:#fff;
+    }
+
+    .secondary{
+      background:#555;
+      color:#fff;
+    }
+
+    footer{
+      text-align:center;
+      padding:10px;
+      font-size:13px;
+      color:#ffffff;
+      opacity:0.85;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="left"></div>
+<header>
+  <h2>✨ AI Saathi</h2>
+  <div class="btns">
+    <a href="index.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+  </div>
+</header>
 
-<div class="right">
+<div class="main">
   <div class="card">
-    <h2>AI Saathi</h2>
-    <input id="mobile" placeholder="10 digit mobile">
-    <input id="pass" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <h1>AI Saathi</h1>
+    <h3>AI ka gyaan, sabke liye</h3>
+
     <p>
-  New user?
-  <a href="signup.html">Sign Up</a>
+      Learn AI from basics to advanced.<br>
+      Get help with any task.<br>
+      Suitable for everyone – from children to elderly.
     </p>
-    <p style="font-size:13px">Password: 8+ char, letter+number+symbol</p>
+
+    <button class="primary" onclick="location.href='signup.html'">
+      Get Started →
+    </button>
+
+    <button class="secondary" onclick="location.href='learn.html'">
+      Learn More
+    </button>
   </div>
 </div>
 
-<script>
-function login(){
-  let m = document.getElementById("mobile").value.trim();
-  let p = document.getElementById("pass").value.trim();
-
-  let users = JSON.parse(localStorage.getItem("users") || "{}");
-
-  if(!users[m]){
-    alert("User not found. Please signup.");
-    return;
-  }
-
-  if(users[m] !== p){
-    alert("Invalid password");
-    return;
-  }
-
-  alert("Login successful");
-  location.href = "dashboard.html";
-}
-</script>
+<footer>
+  Created by: Mr. Somanath Mishra
+</footer>
 
 </body>
 </html>
