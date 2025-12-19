@@ -64,11 +64,23 @@ button{
 
 <script>
 function login(){
-  let m=mobile.value.trim();
-  let p=pass.value.trim();
-  if(!/^\d{10}$/.test(m)){alert("Invalid mobile");return;}
-  if(p.length<8){alert("Weak password");return;}
-  location.href="dashboard.html";
+  let m = document.getElementById("mobile").value.trim();
+  let p = document.getElementById("pass").value.trim();
+
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  if(!users[m]){
+    alert("User not found. Please signup.");
+    return;
+  }
+
+  if(users[m] !== p){
+    alert("Invalid password");
+    return;
+  }
+
+  alert("Login successful");
+  location.href = "dashboard.html";
 }
 </script>
 
