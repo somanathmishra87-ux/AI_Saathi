@@ -6,102 +6,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-
-body{
-  min-height:100vh;
-  background:
-    linear-gradient(rgba(10,25,47,0.85), rgba(10,25,47,0.85)),
-    url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7');
-  background-size:cover;
-  background-position:center;
-  color:#fff;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
+/* HALF IMAGE + HALF BLUE BACKGROUND */
+body{
+  min-height:100vh;
+  color:#fff;
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,40,120,0.75) 50%,
+      rgba(0,40,120,0.95) 50%
+    ),
+    url('https://images.unsplash.com/photo-1581091012184-5c7c7c6f9f84')
+    no-repeat left center / 50% 100%;
+}
+
+/* HEADER */
 header{
-  background:rgba(0,0,0,0.45);
-  padding:14px 20px;
+  background:#f2f6ff;
+  padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-header h2{color:#4da3ff;}
+header h2{color:#1e90ff;}
 header button{
-  background:#1e90ff;color:#fff;
-  border:none;padding:8px 14px;
-  border-radius:6px;cursor:pointer;
-  margin-left:6px;
-}
-
-.hero{
-  display:flex;justify-content:center;align-items:center;
-  min-height:80vh;
-}
-.card{
-  background:rgba(0,0,0,0.65);
-  padding:36px;border-radius:18px;
-  max-width:400px;text-align:center;
-  box-shadow:0 0 35px rgba(30,144,255,0.35);
-}
-.card h1{font-size:36px;}
-.card h3{color:#8fc4ff;margin:12px 0;}
-.card p{font-size:14px;line-height:1.6;color:#e0e0e0;}
-.card button{
-  width:100%;margin-top:16px;
-  padding:13px;border:none;
-  border-radius:8px;font-size:16px;
-}
-.primary{background:#1e90ff;color:#fff;}
-.secondary{
-  background:transparent;
-  border:1px solid #6fb6ff;
-  color:#6fb6ff;
-}
-
-footer{
-  text-align:center;
-  padding:14px;
-  font-size:14px;
-  color:#cfd9e6;
-}
-
-.modal{
-  display:none;
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.75);
-  justify-content:center;align-items:center;
-}
-.modal-box{
-  background:#0b1c2d;
-  padding:22px;border-radius:12px;
-  width:300px;color:#fff;
-}
-.modal-box h3{text-align:center;margin-bottom:10px;}
-.modal-box input{
-  width:100%;
-  padding:9px 36px 9px 9px;
-  margin:6px 0;
-  border:none;border-radius:6px;
-}
-
-.input-group{position:relative;}
-.eye{
-  position:absolute;right:10px;top:50%;
-  transform:translateY(-50%);
+  background:#1e90ff;
+  color:#fff;
+  border:none;
+  padding:8px 14px;
+  border-radius:6px;
   cursor:pointer;
 }
 
+/* HERO */
+.hero{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:80vh;
+}
+.card{
+  background:rgba(0,0,0,0.6);
+  padding:30px;
+  border-radius:16px;
+  max-width:360px;
+  text-align:center;
+}
+.card h1{margin-bottom:6px;}
+.card h3{margin-bottom:10px;}
+.card p{
+  font-size:14px;
+  line-height:1.5;
+}
+.card button{
+  width:100%;
+  margin-top:14px;
+  padding:12px;
+  border:none;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+}
+.primary{background:#1e90ff;color:#fff;}
+.secondary{background:#555;color:#fff;}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:12px;
+  font-size:14px;
+  color:#fff;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  justify-content:center;
+  align-items:center;
+}
+.modal-box{
+  background:#fff;
+  color:#000;
+  padding:20px;
+  border-radius:12px;
+  width:300px;
+}
+.modal-box h3{
+  text-align:center;
+  margin-bottom:10px;
+}
+.modal-box input{
+  width:100%;
+  padding:8px;
+  margin:6px 0;
+}
+.passbox{
+  position:relative;
+}
+.passbox span{
+  position:absolute;
+  right:10px;
+  top:10px;
+  cursor:pointer;
+}
 .modal-box button{
   width:100%;
   padding:10px;
-  background:#1e90ff;color:#fff;
-  border:none;border-radius:6px;
-  margin-top:8px;
+  background:#1e90ff;
+  color:#fff;
+  border:none;
+  border-radius:6px;
 }
 .close{
   text-align:center;
-  margin-top:10px;
-  color:#ff9a9a;
+  margin-top:8px;
+  color:red;
   cursor:pointer;
 }
 </style>
@@ -110,7 +139,7 @@ footer{
 <body>
 
 <header>
-  <h2>🤖 AI Saathi</h2>
+  <h2>✨ AI Saathi</h2>
   <div>
     <button onclick="openLogin()">Login</button>
     <button onclick="openSignup()">Sign Up</button>
@@ -124,8 +153,7 @@ footer{
     <p>
       Learn AI from basics to advanced.<br>
       Get help with any task.<br>
-      Suitable for everyone – from children to elderly.<br>
-      Start your AI journey today.
+      Suitable for everyone – from children to elderly.
     </p>
     <button class="primary" onclick="openSignup()">Get Started →</button>
     <button class="secondary">Learn More</button>
@@ -140,14 +168,11 @@ footer{
 <div class="modal" id="signupModal">
   <div class="modal-box">
     <h3>Sign Up</h3>
-
     <input id="smobile" placeholder="10 Digit Mobile Number">
-
-    <div class="input-group">
+    <div class="passbox">
       <input id="spass" type="password" placeholder="Password">
-      <span class="eye" onclick="togglePass('spass',this)">👁️</span>
+      <span onclick="togglePass('spass',this)">👁️</span>
     </div>
-
     <button onclick="signup()">Create Account</button>
     <div class="close" onclick="closeAll()">Close</div>
   </div>
@@ -157,70 +182,86 @@ footer{
 <div class="modal" id="loginModal">
   <div class="modal-box">
     <h3>Login</h3>
-
-    <input id="lmobile" placeholder="10 Digit Mobile Number">
-
-    <div class="input-group">
+    <input id="lmobile" placeholder="Mobile Number">
+    <div class="passbox">
       <input id="lpass" type="password" placeholder="Password">
-      <span class="eye" onclick="togglePass('lpass',this)">👁️</span>
+      <span onclick="togglePass('lpass',this)">👁️</span>
     </div>
-
     <button onclick="login()">Login</button>
     <div class="close" onclick="closeAll()">Close</div>
   </div>
 </div>
 
 <script>
+const KEY = "AI_SAATHI_USERS_FINAL";
+
 function openSignup(){signupModal.style.display="flex";}
 function openLogin(){loginModal.style.display="flex";}
-function closeAll(){signupModal.style.display="none";loginModal.style.display="none";}
-
-function togglePass(id,el){
-  let i=document.getElementById(id);
-  if(i.type==="password"){i.type="text";el.textContent="🙈";}
-  else{i.type="password";el.textContent="👁️";}
+function closeAll(){
+  signupModal.style.display="none";
+  loginModal.style.display="none";
 }
 
-/* VALIDATION FUNCTIONS */
-function validMobile(m){return /^[0-9]{10}$/.test(m);}
+function togglePass(id,el){
+  const i=document.getElementById(id);
+  if(i.type==="password"){
+    i.type="text";
+    el.textContent="🙈";
+  }else{
+    i.type="password";
+    el.textContent="👁️";
+  }
+}
+
+function validMobile(m){
+  return /^[0-9]{10}$/.test(m);
+}
 function validPassword(p){
   return /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&]).{8,}$/.test(p);
 }
 
+function getUsers(){
+  return JSON.parse(localStorage.getItem(KEY)||"{}");
+}
+function saveUsers(u){
+  localStorage.setItem(KEY,JSON.stringify(u));
+}
+
 function signup(){
-  let m=smobile.value.trim();
-  let p=spass.value.trim();
+  const m=smobile.value.trim();
+  const p=spass.value.trim();
 
   if(!validMobile(m)){
     alert("Mobile number 10 digit ka hona chahiye");
     return;
   }
   if(!validPassword(p)){
-    alert("Password minimum 8 characters ka hona chahiye (letter + number + symbol)");
+    alert("Password minimum 8 characters (letter + number + symbol)");
     return;
   }
 
-  let users=JSON.parse(localStorage.getItem("aiUsers")||"{}");
-  if(users[m]){
+  const u=getUsers();
+  if(u[m]){
     alert("User already exists");
     return;
   }
 
-  users[m]={password:p};
-  localStorage.setItem("aiUsers",JSON.stringify(users));
+  u[m]=p;
+  saveUsers(u);
   alert("Signup successful! Ab login karo.");
   closeAll();
 }
 
 function login(){
-  let m=lmobile.value.trim();
-  let p=lpass.value.trim();
+  const m=lmobile.value.trim();
+  const p=lpass.value.trim();
 
-  let users=JSON.parse(localStorage.getItem("aiUsers")||"{}");
-  if(!users[m] || users[m].password!==p){
+  const u=getUsers();
+  if(!u[m] || u[m]!==p){
     alert("Invalid mobile number or password");
     return;
   }
+
   alert("Login successful 🎉 Welcome to AI Saathi");
   closeAll();
 }
