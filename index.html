@@ -8,103 +8,84 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f172a;color:#fff;}
 
-body{
-  background:#0f172a;
-  color:#fff;
-}
-
-/* HEADER */
 header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:15px 25px;
-  background:rgba(0,0,0,0.6);
-  position:fixed;
-  width:100%;
-  top:0;
-  z-index:10;
+  position:fixed;top:0;width:100%;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 25px;background:rgba(0,0,0,0.6);
+}
+.logo{font-size:20px;font-weight:600;}
+header button{
+  margin-left:8px;
+  background:#2563eb;border:none;color:white;
+  padding:8px 14px;border-radius:6px;
 }
 
-.logo{
-  font-size:20px;
-  font-weight:600;
-}
-
-.login-btn{
-  background:#2563eb;
-  color:white;
-  border:none;
-  padding:8px 16px;
-  border-radius:6px;
-}
-
-/* HERO */
+section{padding:100px 20px;}
 .hero{
   height:100vh;
   background:url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding-top:80px;
+  display:flex;align-items:center;justify-content:center;
 }
-
 .hero-box{
   background:rgba(0,0,0,0.65);
-  padding:40px;
-  border-radius:12px;
-  max-width:700px;
-  text-align:center;
+  padding:40px;border-radius:12px;
+  max-width:750px;text-align:center;
 }
+.hero-box h1{font-size:36px;}
+.hero-box h2{font-size:26px;margin:10px 0;}
+.hero-box p{color:#ddd;margin:20px 0;}
 
-.hero-box h1{
-  font-size:36px;
-  margin-bottom:10px;
+.btn-primary,.btn-secondary{
+  margin:6px;padding:12px 24px;border-radius:8px;
+  font-size:16px;border:none;cursor:pointer;
 }
-
-.hero-box h2{
-  font-size:26px;
-  margin-bottom:15px;
-}
-
-.hero-box p{
-  color:#ddd;
-  margin-bottom:30px;
-}
-
-.btn-primary{
-  background:#3b82f6;
-  border:none;
-  padding:14px 28px;
-  color:white;
-  font-size:18px;
-  border-radius:8px;
-  margin-bottom:15px;
-}
-
+.btn-primary{background:#3b82f6;color:white;}
 .btn-secondary{
   background:rgba(255,255,255,0.15);
-  border:1px solid #aaa;
-  padding:12px 26px;
-  color:white;
-  font-size:16px;
-  border-radius:8px;
+  border:1px solid #aaa;color:white;
 }
 
-/* FOOTER */
+.content{max-width:800px;margin:auto;}
+.content h2{color:#60a5fa;margin-bottom:10px;}
+.content p{margin-bottom:8px;color:#e5e7eb;}
+
 footer{
-  text-align:center;
-  padding:15px;
+  background:#020617;text-align:center;
+  padding:15px;font-size:14px;color:#aaa;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;align-items:center;
+}
+.modal-box{
   background:#020617;
-  font-size:14px;
-  color:#aaa;
+  padding:25px;border-radius:10px;
+  width:90%;max-width:350px;
+}
+.modal-box h3{text-align:center;margin-bottom:15px;}
+.modal-box input{
+  width:100%;padding:10px;margin-bottom:10px;
+  border-radius:6px;border:none;
+}
+.modal-box button{
+  width:100%;padding:10px;
+  background:#3b82f6;color:white;
+  border:none;border-radius:6px;
+}
+.modal-box p{
+  margin-top:10px;font-size:14px;text-align:center;
+}
+.close{
+  text-align:center;margin-top:10px;
+  color:#aaa;cursor:pointer;
 }
 </style>
 </head>
@@ -113,7 +94,10 @@ footer{
 
 <header>
   <div class="logo">🤖 AI Saathi</div>
-  <button class="login-btn" onclick="login()">Login</button>
+  <div>
+    <button onclick="openLogin()">Login</button>
+    <button onclick="openSignup()">Sign Up</button>
+  </div>
 </header>
 
 <section class="hero">
@@ -121,13 +105,24 @@ footer{
     <h1>AI Saathi</h1>
     <h2>AI ka gyaan, sabke liye</h2>
     <p>
-      Learn AI from basics to advanced.<br>
-      Get help with any task.<br>
-      Suitable for everyone – from children to elderly.
+      Bachchon se lekar buzurgon tak,<br>
+      bina coding, apni bhasha me AI seekhiye.
     </p>
+    <button class="btn-primary" onclick="scrollToLearn()">Get Started</button>
+    <button class="btn-secondary" onclick="scrollToLearn()">Learn More</button>
+  </div>
+</section>
 
-    <button class="btn-primary" onclick="getStarted()">Get Started →</button><br>
-    <button class="btn-secondary" onclick="learnMore()">Learn More</button>
+<section id="learn">
+  <div class="content">
+    <h2>AI kya hai?</h2>
+    <p>AI computer ko insan jaise sochna sikhata hai.</p>
+
+    <h2>AI se kya kar sakte hain?</h2>
+    <p>✔ Letter</p>
+    <p>✔ Resume</p>
+    <p>✔ Homework</p>
+    <p>✔ Business ideas</p>
   </div>
 </section>
 
@@ -135,18 +130,76 @@ footer{
   Created by <b>Mr. Somanath Mishra</b>
 </footer>
 
-<!-- BUTTON WORKING SCRIPT -->
+<!-- SIGNUP MODAL -->
+<div class="modal" id="signupModal">
+  <div class="modal-box">
+    <h3>Sign Up</h3>
+    <input id="suName" placeholder="Full Name">
+    <input id="suMobile" placeholder="Mobile Number">
+    <button onclick="signup()">Create Account</button>
+    <p id="suMsg"></p>
+    <div class="close" onclick="closeModal()">Close</div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h3>Login</h3>
+    <input id="liMobile" placeholder="Mobile Number">
+    <button onclick="login()">Login</button>
+    <p id="liMsg"></p>
+    <div class="close" onclick="closeModal()">Close</div>
+  </div>
+</div>
+
 <script>
-function getStarted(){
-  alert("Get Started button kaam kar raha hai ✅\nNext step: AI Chat page.");
+function scrollToLearn(){
+  document.getElementById("learn").scrollIntoView({behavior:"smooth"});
 }
 
-function learnMore(){
-  alert("AI Saathi ek AI learning aur help platform hai.\nSabke liye banaya gaya hai 😊");
+function openSignup(){
+  document.getElementById("signupModal").style.display="flex";
+}
+function openLogin(){
+  document.getElementById("loginModal").style.display="flex";
+}
+function closeModal(){
+  document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
+}
+
+function signup(){
+  let name=document.getElementById("suName").value.trim();
+  let mobile=document.getElementById("suMobile").value.trim();
+
+  if(!name || !mobile){
+    suMsg.innerText="Sab details bharo";
+    return;
+  }
+
+  let users=JSON.parse(localStorage.getItem("aiUsers")||"[]");
+  let exists=users.find(u=>u.mobile===mobile);
+
+  if(exists){
+    suMsg.innerText="User already exists!";
+    return;
+  }
+
+  users.push({name, mobile});
+  localStorage.setItem("aiUsers",JSON.stringify(users));
+  suMsg.innerText="Signup successful! Ab login karo.";
 }
 
 function login(){
-  alert("Login feature coming soon 🚀");
+  let mobile=document.getElementById("liMobile").value.trim();
+  let users=JSON.parse(localStorage.getItem("aiUsers")||"[]");
+  let user=users.find(u=>u.mobile===mobile);
+
+  if(user){
+    liMsg.innerText="Welcome "+user.name+" 🎉";
+  }else{
+    liMsg.innerText="User not found. Signup first.";
+  }
 }
 </script>
 
