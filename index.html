@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>AI Saathi</title>
@@ -9,83 +9,146 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-body{background:#0f172a;color:#fff;}
+body{
+  background:#0f172a;
+  color:#fff;
+}
 
+/* HEADER */
 header{
-  position:fixed;top:0;width:100%;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:15px 25px;background:rgba(0,0,0,0.6);
-}
-.logo{font-size:20px;font-weight:600;}
-header button{
-  margin-left:8px;
-  background:#2563eb;border:none;color:white;
-  padding:8px 14px;border-radius:6px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 25px;
+  background:rgba(0,0,0,0.6);
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:10;
 }
 
-section{padding:100px 20px;}
+.logo{
+  font-size:20px;
+  font-weight:600;
+}
+
+header button{
+  background:#2563eb;
+  color:#fff;
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  margin-left:6px;
+}
+
+/* HERO */
 .hero{
   height:100vh;
   background:url('https://images.unsplash.com/photo-1531746790731-6c087fecd65a') center/cover no-repeat;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding-top:80px;
 }
-.hero-box{
-  background:rgba(0,0,0,0.65);
-  padding:40px;border-radius:12px;
-  max-width:750px;text-align:center;
-}
-.hero-box h1{font-size:36px;}
-.hero-box h2{font-size:26px;margin:10px 0;}
-.hero-box p{color:#ddd;margin:20px 0;}
 
-.btn-primary,.btn-secondary{
-  margin:6px;padding:12px 24px;border-radius:8px;
-  font-size:16px;border:none;cursor:pointer;
+.hero-box{
+  background:rgba(0,0,0,0.6);
+  padding:40px;
+  border-radius:12px;
+  max-width:700px;
 }
-.btn-primary{background:#3b82f6;color:white;}
+
+.hero h1{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.hero h2{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:16px;
+  color:#ddd;
+  margin-bottom:30px;
+}
+
+.btn-primary{
+  background:#3b82f6;
+  padding:14px 28px;
+  color:white;
+  font-size:18px;
+  border:none;
+  border-radius:8px;
+  margin-bottom:15px;
+}
+
 .btn-secondary{
   background:rgba(255,255,255,0.15);
-  border:1px solid #aaa;color:white;
+  padding:12px 26px;
+  color:white;
+  font-size:16px;
+  border:1px solid #aaa;
+  border-radius:8px;
 }
 
-.content{max-width:800px;margin:auto;}
-.content h2{color:#60a5fa;margin-bottom:10px;}
-.content p{margin-bottom:8px;color:#e5e7eb;}
-
+/* FOOTER */
 footer{
-  background:#020617;text-align:center;
-  padding:15px;font-size:14px;color:#aaa;
+  text-align:center;
+  padding:15px;
+  background:#020617;
+  font-size:14px;
+  color:#aaa;
 }
 
 /* MODAL */
 .modal{
   display:none;
-  position:fixed;top:0;left:0;
+  position:fixed;
+  top:0;left:0;
   width:100%;height:100%;
   background:rgba(0,0,0,0.8);
-  justify-content:center;align-items:center;
+  justify-content:center;
+  align-items:center;
 }
 .modal-box{
   background:#020617;
-  padding:25px;border-radius:10px;
-  width:90%;max-width:350px;
+  padding:25px;
+  border-radius:10px;
+  width:90%;
+  max-width:320px;
 }
-.modal-box h3{text-align:center;margin-bottom:15px;}
+.modal-box h3{
+  text-align:center;
+  margin-bottom:15px;
+}
 .modal-box input{
-  width:100%;padding:10px;margin-bottom:10px;
-  border-radius:6px;border:none;
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border-radius:6px;
+  border:none;
 }
 .modal-box button{
-  width:100%;padding:10px;
-  background:#3b82f6;color:white;
-  border:none;border-radius:6px;
+  width:100%;
+  padding:10px;
+  background:#3b82f6;
+  color:white;
+  border:none;
+  border-radius:6px;
 }
 .modal-box p{
-  margin-top:10px;font-size:14px;text-align:center;
+  margin-top:10px;
+  font-size:14px;
+  text-align:center;
 }
 .close{
-  text-align:center;margin-top:10px;
-  color:#aaa;cursor:pointer;
+  text-align:center;
+  margin-top:10px;
+  color:#aaa;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -103,105 +166,4 @@ footer{
 <section class="hero">
   <div class="hero-box">
     <h1>AI Saathi</h1>
-    <h2>AI ka gyaan, sabke liye</h2>
-    <p>
-      Bachchon se lekar buzurgon tak,<br>
-      bina coding, apni bhasha me AI seekhiye.
-    </p>
-    <button class="btn-primary" onclick="scrollToLearn()">Get Started</button>
-    <button class="btn-secondary" onclick="scrollToLearn()">Learn More</button>
-  </div>
-</section>
-
-<section id="learn">
-  <div class="content">
-    <h2>AI kya hai?</h2>
-    <p>AI computer ko insan jaise sochna sikhata hai.</p>
-
-    <h2>AI se kya kar sakte hain?</h2>
-    <p>✔ Letter</p>
-    <p>✔ Resume</p>
-    <p>✔ Homework</p>
-    <p>✔ Business ideas</p>
-  </div>
-</section>
-
-<footer>
-  Created by <b>Mr. Somanath Mishra</b>
-</footer>
-
-<!-- SIGNUP MODAL -->
-<div class="modal" id="signupModal">
-  <div class="modal-box">
-    <h3>Sign Up</h3>
-    <input id="suName" placeholder="Full Name">
-    <input id="suMobile" placeholder="Mobile Number">
-    <button onclick="signup()">Create Account</button>
-    <p id="suMsg"></p>
-    <div class="close" onclick="closeModal()">Close</div>
-  </div>
-</div>
-
-<!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-  <div class="modal-box">
-    <h3>Login</h3>
-    <input id="liMobile" placeholder="Mobile Number">
-    <button onclick="login()">Login</button>
-    <p id="liMsg"></p>
-    <div class="close" onclick="closeModal()">Close</div>
-  </div>
-</div>
-
-<script>
-function scrollToLearn(){
-  document.getElementById("learn").scrollIntoView({behavior:"smooth"});
-}
-
-function openSignup(){
-  document.getElementById("signupModal").style.display="flex";
-}
-function openLogin(){
-  document.getElementById("loginModal").style.display="flex";
-}
-function closeModal(){
-  document.querySelectorAll(".modal").forEach(m=>m.style.display="none");
-}
-
-function signup(){
-  let name=document.getElementById("suName").value.trim();
-  let mobile=document.getElementById("suMobile").value.trim();
-
-  if(!name || !mobile){
-    suMsg.innerText="Sab details bharo";
-    return;
-  }
-
-  let users=JSON.parse(localStorage.getItem("aiUsers")||"[]");
-  let exists=users.find(u=>u.mobile===mobile);
-
-  if(exists){
-    suMsg.innerText="User already exists!";
-    return;
-  }
-
-  users.push({name, mobile});
-  localStorage.setItem("aiUsers",JSON.stringify(users));
-  suMsg.innerText="Signup successful! Ab login karo.";
-}
-
-function login(){
-  let mobile=document.getElementById("liMobile").value.trim();
-  let users=JSON.parse(localStorage.getItem("aiUsers")||"[]");
-  let user=users.find(u=>u.mobile===mobile);
-
-  if(user){
-    liMsg.innerText="Welcome "+user.name+" 🎉";
-  }else{
-    liMsg.innerText="User not found. Signup first.";
-  }
-}
-</script>
-
-</body>
-</html>
+    <h2
