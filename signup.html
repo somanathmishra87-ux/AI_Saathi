@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Saathi - Sign Up</title>
+<title>AI Saathi - Signup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
   margin:0;
   height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  background:#0d47a1;
+  justify-content:center;
+  background:#0a3d91;
   font-family:Arial;
 }
 .box{
-  background:#0b2c4d;
+  background:#062b63;
   padding:25px;
-  border-radius:10px;
   width:300px;
+  border-radius:10px;
   color:#fff;
 }
 input,button{
   width:100%;
   padding:10px;
-  margin:8px 0;
-  border-radius:6px;
-  border:none;
+  margin:6px 0;
 }
-button{background:#2196f3;color:#fff;font-size:16px;}
-a{color:#4fc3f7;text-decoration:none;}
+button{
+  background:#0b5ed7;
+  border:none;
+  color:#fff;
+}
+a{color:#4fc3f7;text-decoration:none;font-size:13px}
 </style>
 </head>
-<body>
 
+<body>
 <div class="box">
 <h2>Sign Up</h2>
-<input id="name" placeholder="Full Name">
+
 <input id="mobile" placeholder="10 digit mobile">
 <input id="pass" type="password" placeholder="Password">
 
 <button onclick="signup()">Create Account</button>
 
-<p style="text-align:center;">
-  Already have account?
-  <a href="index.html">Login</a>
+<p style="text-align:center">
+<a href="index.html">Already have account? Login</a>
 </p>
 </div>
 
 <script>
 function signup(){
-  let name=name.value.trim();
-  let mobile=mobile.value.trim();
-  let pass=pass.value.trim();
+  let m = mobile.value.trim();
+  let p = pass.value.trim();
 
-  if(!/^[0-9]{10}$/.test(mobile)){
+  if(!/^\d{10}$/.test(m)){
     alert("Mobile must be 10 digits");
     return;
   }
-  if(pass.length<8){
+  if(p.length < 8){
     alert("Password minimum 8 characters");
     return;
   }
 
-  let users=JSON.parse(localStorage.getItem("users")||"{}");
-  if(users[mobile]){
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  if(users[m]){
     alert("User already exists");
     return;
   }
 
-  users[mobile] = pass;
-  localStorage.setItem("users",JSON.stringify(users));
-  alert("Signup successful! Now login.");
+  users[m] = p;
+  localStorage.setItem("users", JSON.stringify(users));
+  alert("Signup successful. Now login.");
   location.href="index.html";
 }
 </script>
