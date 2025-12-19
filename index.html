@@ -47,12 +47,15 @@ header .btns a{
 .main{
   display:flex;
   height:calc(100vh - 90px);
+  width:100%;
 }
 
 /* LEFT IMAGE */
 .left{
   flex:1;
-  background:url("robot-ai.jpg") center/cover no-repeat;
+  background:url("robot-ai.jpg") no-repeat center;
+  background-size: contain;
+  background-color:#0b5ed7;
 }
 
 /* RIGHT BLUE */
@@ -111,6 +114,18 @@ footer{
   color:#fff;
   background:#0a3d91;
 }
+  @media(max-width:768px){
+  .main{
+    flex-direction:column;
+  }
+  .left{
+    height:40vh;
+    background-size:contain;
+  }
+  .right{
+    height:60vh;
+  }
+  }
 </style>
 </head>
 
