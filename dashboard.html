@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard - AI Saathi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Saathi - Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
   margin:0;
   font-family:Arial;
-  background:linear-gradient(135deg,#0b4fa3,#1e90ff);
+  background:#f5f7fb;
+}
+header{
+  background:#0a3d91;
   color:#fff;
+  padding:12px;
   text-align:center;
 }
-.box{
-  margin-top:80px;
+section{
+  padding:20px;
 }
-button{
-  padding:14px 20px;
+.card{
   background:#fff;
-  color:#0b4fa3;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
+  padding:20px;
+  border-radius:10px;
+  margin-bottom:15px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <h1>Welcome to AI Saathi</h1>
-  <p>AI sikho, AI sikhao</p>
-  <button onclick="location.href='learn.html'">Learn AI</button>
-</div>
+<header>
+  Welcome to AI Saathi 🤖
+</header>
+
+<section>
+  <div class="card">
+    <h3>AI kya hai?</h3>
+    <p>
+      Artificial Intelligence (AI) computer ko insan jaise sochna aur
+      decision lena sikhata hai.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>AI se kya kya ho sakta hai?</h3>
+    <ul>
+      <li>Resume banana</li>
+      <li>Study help</li>
+      <li>Image & video creation</li>
+      <li>Chatbot & automation</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <button onclick="logout()">Logout</button>
+  </div>
+</section>
+
+<script>
+function logout(){
+  location.href="index.html";
+}
+</script>
 
 </body>
 </html>
