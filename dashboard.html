@@ -1,25 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard - AI Saathi</title>
+<title>AI Saathi Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body{margin:0;background:#0b5ed7;color:#fff;font-family:Arial}
-header{background:#0a3d91;padding:14px;text-align:center;font-size:20px}
-.content{padding:20px}
-.card{background:#072b5f;padding:16px;border-radius:12px;margin-bottom:15px}
+header{
+  background:#0a3d91;
+  padding:14px;
+  text-align:center;
+  font-size:20px;
+}
+.card{
+  background:#072b5f;
+  margin:16px;
+  padding:16px;
+  border-radius:12px;
+}
+textarea{
+  width:100%;
+  height:80px;
+  border-radius:6px;
+  padding:10px;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#ffc107;
+  border:none;
+  font-weight:bold;
+  border-radius:6px;
+}
+footer{
+  text-align:center;
+  padding:10px;
+  font-size:13px;
+}
 </style>
 </head>
+
 <body>
 
 <header>Welcome to AI Saathi 🚀</header>
 
-<div class="content">
 <div class="card">
-<h3>Dashboard</h3>
-<p>Yahan future me AI tools add honge.</p>
+<h3>AI kya hai?</h3>
+<p>Artificial Intelligence computer ko insaan jaise sochna aur decision lena sikhata hai.</p>
 </div>
+
+<div class="card">
+<h3>AI se kya kar sakte hai?</h3>
+<ul>
+<li>Resume banana</li>
+<li>Study help</li>
+<li>Job preparation</li>
+<li>Business ideas</li>
+</ul>
 </div>
+
+<div class="card">
+<h3>Ask AI 🤖</h3>
+<textarea placeholder="Yahan apna sawal likho..."></textarea>
+<button onclick="ask()">Ask AI</button>
+</div>
+
+<footer>
+© 2025 AI Saathi | Created by Mr. Somanath Mishra
+</footer>
+
+<script>
+function ask(){
+  alert("AI reply demo. Future me ChatGPT connect hoga.");
+}
+</script>
 
 </body>
 </html>
