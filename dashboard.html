@@ -1,113 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Saathi Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body{
-      margin:0;
-      font-family:Arial;
-      background:#0b5ed7;
-      color:#fff;
-    }
-
-    header{
-      background:#0a3d91;
-      padding:14px;
-      text-align:center;
-      font-size:20px;
-      font-weight:bold;
-    }
-
-    .content{
-      padding:20px;
-    }
-
-    .card{
-      background:rgba(0,0,0,0.5);
-      padding:20px;
-      border-radius:12px;
-      margin-bottom:18px;
-    }
-
-    textarea{
-      width:100%;
-      height:80px;
-      border-radius:6px;
-      padding:10px;
-      border:none;
-      resize:none;
-      font-size:14px;
-    }
-
-    button{
-      width:100%;
-      padding:10px;
-      margin-top:10px;
-      background:#ffc107;
-      border:none;
-      border-radius:6px;
-      font-size:16px;
-      cursor:pointer;
-    }
-
-    .answer{
-      margin-top:12px;
-      font-size:14px;
-      color:#dff;
-    }
-  </style>
+<title>AI Saathi Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{margin:0;font-family:Arial;background:#0b5ed7;color:#fff;}
+header{
+  background:#0a3d91;
+  padding:15px;
+  text-align:center;
+  font-size:20px;
+  position:relative;
+}
+.logout{
+  position:absolute;
+  right:15px;
+  top:12px;
+  background:#ffc107;
+  padding:6px 10px;
+  border-radius:5px;
+  cursor:pointer;
+  color:#000;
+}
+.card{
+  background:#08306b;
+  margin:20px;
+  padding:20px;
+  border-radius:12px;
+}
+textarea{
+  width:100%;
+  height:80px;
+  padding:10px;
+  border-radius:6px;
+}
+button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  background:#ffc107;
+  border:none;
+  font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  Welcome to AI Saathi 🚀
+Welcome to AI Saathi 🚀
+<span class="logout" onclick="logout()">Logout</span>
 </header>
 
-<div class="content">
+<div class="card">
+<h3>AI kya hai?</h3>
+<p>AI computer ko insan jaise sochna sikhata hai.</p>
+</div>
 
-  <div class="card">
-    <h3>AI kya hai?</h3>
-    <p>
-      Artificial Intelligence computer ko insan jaise sochna, samajhna
-      aur decision lena sikhata hai.
-    </p>
-  </div>
+<div class="card">
+<h3>AI se kya kar sakte hai?</h3>
+<ul>
+<li>Resume banana</li>
+<li>Study help</li>
+<li>Job preparation</li>
+<li>Business ideas</li>
+</ul>
+</div>
 
-  <div class="card">
-    <h3>AI se kya kar sakte hai?</h3>
-    <ul>
-      <li>Resume banana</li>
-      <li>Study help</li>
-      <li>Job preparation</li>
-      <li>Business ideas</li>
-    </ul>
-  </div>
-
-  <!-- 🔥 ASK AI SECTION -->
-  <div class="card">
-    <h3>Ask AI 🤖</h3>
-    <textarea id="question" placeholder="Yahan apna sawal likho..."></textarea>
-    <button onclick="askAI()">Ask AI</button>
-    <div class="answer" id="answer"></div>
-  </div>
-
+<div class="card">
+<h3>Ask AI 🤖</h3>
+<textarea id="question" placeholder="Apna sawal likho..."></textarea>
+<button onclick="askAI()">Ask AI</button>
+<p id="reply"></p>
 </div>
 
 <script>
-function askAI(){
-  let q = document.getElementById("question").value.trim();
-  if(q === ""){
-    alert("Please sawal likho");
-    return;
-  }
+if(localStorage.getItem("loggedIn")!=="yes"){
+ location.href="index.html";
+}
 
-  document.getElementById("answer").innerHTML =
-    "🤖 AI jawab de raha hai...<br><br>" +
-    "Is demo version me ChatGPT direct connected nahi hai.<br>" +
-    "Future me API connect karke real answers milenge.";
+function logout(){
+ localStorage.removeItem("loggedIn");
+ location.href="index.html";
+}
+
+function askAI(){
+ let q=document.getElementById("question").value;
+ if(q===""){alert("Question likho");return;}
+ document.getElementById("reply").innerHTML =
+ "🤖 AI Saathi:<br>Aapne pucha: <b>"+q+
+ "</b><br><br>Ye demo AI reply hai. Real ChatGPT API se connect kiya ja sakta hai.";
 }
 </script>
 
