@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>AI Saathi - Signup</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0b5ed7;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.box{
-  background:#001a3d;
-  color:white;
-  padding:25px;
-  width:300px;
-  border-radius:10px;
-  text-align:center;
-}
-input,button{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border:none;
-  border-radius:6px;
-}
-button{
-  background:#198754;
-  color:white;
-  font-size:16px;
-}
-a{color:#9fd3ff;text-decoration:none;}
-</style>
+  <title>AI Saathi - Signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{
+      margin:0;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:#0b5ed7;
+      font-family:Arial;
+    }
+    .box{
+      background:#002b64;
+      color:#fff;
+      padding:25px;
+      width:300px;
+      border-radius:12px;
+      text-align:center;
+    }
+    input,button{
+      width:100%;
+      padding:10px;
+      margin:8px 0;
+      border-radius:6px;
+      border:none;
+    }
+    button{
+      background:#0b5ed7;
+      color:#fff;
+      font-size:15px;
+    }
+    a{color:#9ec5ff;text-decoration:none;}
+  </style>
 </head>
 
 <body>
@@ -46,33 +44,37 @@ a{color:#9fd3ff;text-decoration:none;}
   <input id="mobile" placeholder="10 digit mobile">
   <input id="pass" type="password" placeholder="Password">
   <button onclick="signup()">Create Account</button>
-  <p><a href="index.html">Back to Login</a></p>
+  <p style="font-size:13px;">
+    <a href="index.html">Already have account? Login</a>
+  </p>
 </div>
 
 <script>
 function signup(){
-  let m=document.getElementById("mobile").value.trim();
-  let p=document.getElementById("pass").value.trim();
+  let m = mobile.value.trim();
+  let p = pass.value.trim();
 
   if(!/^\d{10}$/.test(m)){
     alert("Mobile must be 10 digits");
     return;
   }
-  if(p.length<6){
-    alert("Password min 6 chars");
+
+  if(p.length < 8){
+    alert("Password minimum 8 characters");
     return;
   }
 
-  let users=JSON.parse(localStorage.getItem("users")||"{}");
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
 
   if(users[m]){
     alert("User already exists");
     return;
   }
 
-  users[m]=p;
-  localStorage.setItem("users",JSON.stringify(users));
-  alert("Signup successful");
+  users[m] = p;
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Signup successful. Now login.");
   location.href="index.html";
 }
 </script>
