@@ -14,7 +14,7 @@ body{
   margin:0;
   background:#0b5ed7;
   color:#fff;
-  padding-bottom:45px;
+  padding-bottom:50px;
 }
 
 /* HEADER */
@@ -36,10 +36,11 @@ header a{
   font-size:14px;
 }
 
-/* HERO IMAGE */
+/* HERO IMAGE (NO CUT) */
 .hero{
-  height:220px;
-  background:url("robot-ai.jpg") center/cover no-repeat;
+  height:240px;
+  background:url("robot-ai.jpg") center/contain no-repeat;
+  background-color:#0b5ed7;
 }
 
 /* CARD */
@@ -102,13 +103,14 @@ footer{
   <div class="logo">✨ AI Saathi</div>
   <div>
     <a href="#login">Login</a>
+    <a href="signup.html">Sign Up</a>
     <a href="#ask">Ask AI</a>
   </div>
 </header>
 
 <div class="hero"></div>
 
-<!-- LOGIN -->
+<!-- LOGIN SECTION -->
 <div class="card" id="login">
   <h2>Login</h2>
   <input type="text" id="mobile" placeholder="10 digit mobile">
@@ -117,10 +119,12 @@ footer{
     <span class="eye" onclick="togglePass()">👁️</span>
   </div>
   <button onclick="login()">Login</button>
-  <p style="font-size:12px;">Password: min 8 chars (letter + number + symbol)</p>
+  <p style="font-size:12px;">
+    Password: minimum 8 characters
+  </p>
 </div>
 
-<!-- ASK AI -->
+<!-- ASK AI SECTION -->
 <div class="card" id="ask">
   <h2>Ask AI 🤖</h2>
   <textarea id="question" rows="3" placeholder="Yahan apna sawal likho..."></textarea>
@@ -133,16 +137,19 @@ footer{
 </footer>
 
 <script>
+/* Year auto */
 document.getElementById("year").innerText = new Date().getFullYear();
 
+/* Show / Hide Password */
 function togglePass(){
   let p = document.getElementById("password");
   p.type = p.type === "password" ? "text" : "password";
 }
 
+/* Demo Login */
 function login(){
-  let m = document.getElementById("mobile").value;
-  let p = document.getElementById("password").value;
+  let m = document.getElementById("mobile").value.trim();
+  let p = document.getElementById("password").value.trim();
 
   if(!/^[0-9]{10}$/.test(m)){
     alert("Mobile must be 10 digits");
@@ -153,11 +160,13 @@ function login(){
     return;
   }
   alert("Login successful (demo)");
+  // future: location.href="dashboard.html";
 }
 
+/* Ask AI Demo */
 function askAI(){
-  let q = document.getElementById("question").value;
-  if(q.trim() === ""){
+  let q = document.getElementById("question").value.trim();
+  if(q === ""){
     alert("Please write a question");
     return;
   }
