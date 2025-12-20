@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>AI Saathi - Dashboard</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0b5ed7;
-  color:white;
-  text-align:center;
-  padding-top:60px;
-}
-button{
-  padding:10px 20px;
-  border:none;
-  border-radius:6px;
-  background:#dc3545;
-  color:white;
-  font-size:16px;
-}
-</style>
+  <title>AI Saathi Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#0b5ed7;
+      color:#fff;
+    }
+    header{
+      background:#0a3d91;
+      padding:12px;
+      text-align:center;
+      font-size:18px;
+    }
+    .content{
+      padding:20px;
+    }
+    .card{
+      background:rgba(0,0,0,0.5);
+      padding:20px;
+      border-radius:10px;
+      margin-bottom:15px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Welcome to AI Saathi 🎉</h1>
-<p>You are successfully logged in.</p>
-<button onclick="logout()">Logout</button>
+<header>Welcome to AI Saathi 🚀</header>
 
-<script>
-function logout(){
-  location.href="index.html";
-}
-</script>
+<div class="content">
+  <div class="card">
+    <h3>AI kya hai?</h3>
+    <p>
+      Artificial Intelligence computer ko insan jaise sochna aur decision lena sikhata hai.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>AI se kya kar sakte hai?</h3>
+    <ul>
+      <li>Resume banana</li>
+      <li>Study help</li>
+      <li>Job preparation</li>
+      <li>Business ideas</li>
+    </ul>
+  </div>
+</div>
 
 </body>
 </html>
