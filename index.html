@@ -1,166 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>AI Saathi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Saathi - Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-*{
+body{
   margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* HEADER */
-header{
-  height:55px;
-  background:#ffffff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 15px;
-  border-bottom:1px solid #ddd;
-}
-.logo{
-  font-weight:bold;
-  color:#0b5ed7;
-}
-.nav a{
-  text-decoration:none;
-  margin-left:10px;
-  padding:6px 12px;
-  border-radius:4px;
-  font-size:14px;
-}
-.nav .login{
-  color:#0b5ed7;
-  border:1px solid #0b5ed7;
-}
-.nav .signup{
+  font-family:Arial;
   background:#0b5ed7;
-  color:#fff;
-}
-
-/* MAIN LAYOUT */
-.main{
+  height:100vh;
   display:flex;
-  height:calc(100vh - 90px);
-}
-.left{
-  width:50%;
-  background:url("robot-ai.jpg") center/cover no-repeat;
-}
-.right{
-  width:50%;
-  background:#0b5ed7;
-  display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
 }
-
-/* CARD */
 .card{
-  background:rgba(0,0,0,0.7);
+  background:#001a3d;
   color:#fff;
   padding:25px;
   width:300px;
-  border-radius:12px;
+  border-radius:10px;
   text-align:center;
 }
-.card h2{
-  margin-bottom:5px;
-}
-.card h4{
-  font-weight:normal;
-  margin-bottom:10px;
-}
-.card p{
-  font-size:13px;
-  line-height:1.4;
-}
-.card button{
+input,button{
   width:100%;
   padding:10px;
-  margin-top:12px;
+  margin:8px 0;
   border:none;
   border-radius:6px;
-  font-size:15px;
-  cursor:pointer;
 }
-.primary{
+button{
   background:#0b5ed7;
-  color:#fff;
+  color:white;
+  font-size:16px;
 }
-.secondary{
-  background:#6c757d;
-  color:#fff;
-}
-
-/* FOOTER */
-footer{
-  height:35px;
-  background:#0a3d91;
-  color:#fff;
+a{color:#9fd3ff;text-decoration:none;}
+.footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
   text-align:center;
-  font-size:13px;
-  padding-top:8px;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .main{
-    flex-direction:column;
-  }
-  .left{
-    width:100%;
-    height:40vh;
-    background-size:contain;
-  }
-  .right{
-    width:100%;
-    height:60vh;
-  }
+  font-size:12px;
+  color:white;
+  background:#08306b;
+  padding:6px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">✨ AI Saathi</div>
-  <div class="nav">
-    <a class="login" href="index.html">Login</a>
-    <a class="signup" href="signup.html">Sign Up</a>
-  </div>
-</header>
-
-<div class="main">
-  <div class="left"></div>
-
-  <div class="right">
-    <div class="card">
-      <h2>AI Saathi</h2>
-      <h4>AI ka gyaan, sabke liye</h4>
-      <p>
-        Learn AI from basics to advanced.<br>
-        Get help with any task.<br>
-        Suitable for everyone – from children to elderly.
-      </p>
-      <button class="primary" onclick="location.href='signup.html'">
-        Get Started →
-      </button>
-      <button class="secondary" onclick="location.href='learn.html'">
-        Learn More
-      </button>
-    </div>
-  </div>
+<div class="card">
+  <h2>AI Saathi</h2>
+  <input id="mobile" placeholder="10 digit mobile">
+  <input id="pass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <p>New user? <a href="signup.html">Sign Up</a></p>
 </div>
 
-<footer>
+<div class="footer">
   Created by: Mr. Somanath Mishra
-</footer>
+</div>
+
+<script>
+function login(){
+  let m=document.getElementById("mobile").value.trim();
+  let p=document.getElementById("pass").value.trim();
+
+  let users=JSON.parse(localStorage.getItem("users")||"{}");
+
+  if(!users[m]){
+    alert("User not found. Please Sign Up");
+    return;
+  }
+  if(users[m]!=p){
+    alert("Wrong password");
+    return;
+  }
+  location.href="dashboard.html";
+}
+</script>
 
 </body>
 </html>
