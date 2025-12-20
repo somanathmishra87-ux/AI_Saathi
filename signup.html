@@ -1,60 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Signup - AI Saathi</title>
+<title>AI Saathi - Signup</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 body{
   margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#0a3d91;
   font-family:Arial;
+  background:#0b5ed7;
+  color:#fff;
 }
 .box{
-  background:#0b5ed7;
+  max-width:320px;
+  margin:60px auto;
+  background:#061a33;
   padding:25px;
-  width:300px;
-  color:#fff;
-  border-radius:10px;
+  border-radius:12px;
+  text-align:center;
 }
 input,button{
   width:100%;
   padding:10px;
-  margin:6px 0;
+  margin:8px 0;
   border-radius:6px;
   border:none;
 }
-button{background:#ffc107;font-weight:bold;}
+button{
+  background:#28a745;
+  font-weight:bold;
+}
+a{color:#ffc107;text-decoration:none}
 </style>
 </head>
 
 <body>
+
 <div class="box">
-<h2>Create Account</h2>
-<input id="mobile" placeholder="10 digit mobile">
-<input id="pass" type="password" placeholder="Password">
-<button onclick="signup()">Signup</button>
-<p><a href="index.html">Login</a></p>
+  <h2>Create Account</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="mobile" placeholder="10 digit mobile">
+  <input id="pass" type="password" placeholder="Password">
+
+  <button onclick="signup()">Sign Up</button>
+
+  <p>Already have account? <a href="index.html">Login</a></p>
 </div>
 
 <script>
 function signup(){
- let m=mobile.value.trim();
- let p=pass.value.trim();
- if(!/^\d{10}$/.test(m)){alert("Invalid mobile");return;}
- if(p.length<6){alert("Password too short");return;}
+  let name   = document.getElementById("name").value.trim();
+  let mobile = document.getElementById("mobile").value.trim();
+  let pass   = document.getElementById("pass").value.trim();
 
- let users=JSON.parse(localStorage.getItem("users")||"{}");
- if(users[m]){alert("User exists");return;}
+  if(name=="" || mobile=="" || pass==""){
+    alert("All fields required");
+    return;
+  }
 
- users[m]=p;
- localStorage.setItem("users",JSON.stringify(users));
- alert("Signup success");
- location.href="index.html";
+  if(!/^\d{10}$/.test(mobile)){
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users") || "{}");
+
+  if(users[mobile]){
+    alert("User already exists");
+    return;
+  }
+
+  users[mobile] = {
+    name: name,
+    password: pass
+  };
+
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Signup successful. Now login.");
+  location.href="index.html";
 }
 </script>
+
 </body>
 </html>
