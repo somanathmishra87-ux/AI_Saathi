@@ -1,85 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Saathi - Signup</title>
+<title>Sign Up - AI Saathi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:#0b5ed7;
-  color:#fff;
-}
-.box{
-  max-width:320px;
-  margin:60px auto;
-  background:#061a33;
-  padding:25px;
-  border-radius:12px;
-  text-align:center;
-}
-input,button{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:6px;
-  border:none;
-}
-button{
-  background:#28a745;
-  font-weight:bold;
-}
-a{color:#ffc107;text-decoration:none}
+body{background:#0b5ed7;font-family:Arial;color:#fff}
+.box{max-width:360px;margin:60px auto;background:#071a3a;padding:20px;border-radius:12px}
+input,button{width:100%;padding:12px;margin:10px 0;border-radius:6px;border:none}
+button{background:#ffc107;font-weight:bold}
 </style>
 </head>
-
 <body>
 
 <div class="box">
-  <h2>Create Account</h2>
-
-  <input id="name" placeholder="Full Name">
-  <input id="mobile" placeholder="10 digit mobile">
-  <input id="pass" type="password" placeholder="Password">
-
-  <button onclick="signup()">Sign Up</button>
-
-  <p>Already have account? <a href="index.html">Login</a></p>
+<h2>Sign Up</h2>
+<input placeholder="Full Name">
+<input placeholder="Mobile Number">
+<input type="password" placeholder="Password">
+<button onclick="signup()">Create Account</button>
+<p style="text-align:center">
+<a href="index.html" style="color:#ffc107">Back to Login</a>
+</p>
 </div>
 
 <script>
 function signup(){
-  let name   = document.getElementById("name").value.trim();
-  let mobile = document.getElementById("mobile").value.trim();
-  let pass   = document.getElementById("pass").value.trim();
-
-  if(name=="" || mobile=="" || pass==""){
-    alert("All fields required");
-    return;
-  }
-
-  if(!/^\d{10}$/.test(mobile)){
-    alert("Enter valid mobile number");
-    return;
-  }
-
-  let users = JSON.parse(localStorage.getItem("users") || "{}");
-
-  if(users[mobile]){
-    alert("User already exists");
-    return;
-  }
-
-  users[mobile] = {
-    name: name,
-    password: pass
-  };
-
-  localStorage.setItem("users", JSON.stringify(users));
-
-  alert("Signup successful. Now login.");
-  location.href="index.html";
+ alert("Signup successful (demo)");
+ window.location.href="index.html";
 }
 </script>
 
