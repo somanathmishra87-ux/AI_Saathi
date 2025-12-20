@@ -1,74 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>AI Saathi - Login</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>AI Saathi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+*{
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
 body{
   margin:0;
-  height:100vh;
-  display:flex;
-  font-family:Arial;
-}
-.left{
-  flex:1;
-  background:url('robot-ai.jpg') center/cover no-repeat;
-}
-.right{
-  flex:1;
   background:#0b5ed7;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.card{
-  background:rgba(0,0,0,.75);
-  padding:25px;
-  width:300px;
-  border-radius:12px;
   color:#fff;
+  padding-bottom:45px;
 }
-input,button{
+
+/* HEADER */
+header{
+  background:#0a3d91;
+  padding:12px 16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+header .logo{
+  font-size:20px;
+  font-weight:bold;
+}
+header a{
+  color:#fff;
+  margin-left:12px;
+  text-decoration:none;
+  font-size:14px;
+}
+
+/* HERO IMAGE */
+.hero{
+  height:220px;
+  background:url("robot-ai.jpg") center/cover no-repeat;
+}
+
+/* CARD */
+.card{
+  max-width:360px;
+  background:rgba(0,0,0,0.7);
+  margin:20px auto;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+}
+
+/* INPUT */
+input, textarea{
   width:100%;
   padding:10px;
-  margin:6px 0;
-  border-radius:6px;
+  margin:8px 0;
   border:none;
+  border-radius:6px;
 }
-button{
-  background:#ffc107;
-  font-weight:bold;
+.password-box{
+  position:relative;
+}
+.eye{
+  position:absolute;
+  right:10px;
+  top:12px;
   cursor:pointer;
 }
-a{color:#ffd}
+
+/* BUTTON */
+button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border:none;
+  border-radius:6px;
+  background:#ffc107;
+  font-size:16px;
+  cursor:pointer;
+}
+
+/* FOOTER */
+footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0a3d91;
+  text-align:center;
+  font-size:13px;
+  padding:8px 0;
+}
 </style>
 </head>
 
 <body>
-<div class="left"></div>
 
-<div class="right">
-  <div class="card">
-    <h2>AI Saathi</h2>
-    <input id="mobile" placeholder="10 digit mobile">
-    <input id="pass" type="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <p>New user? <a href="signup.html">Sign up</a></p>
+<header>
+  <div class="logo">✨ AI Saathi</div>
+  <div>
+    <a href="#login">Login</a>
+    <a href="#ask">Ask AI</a>
   </div>
+</header>
+
+<div class="hero"></div>
+
+<!-- LOGIN -->
+<div class="card" id="login">
+  <h2>Login</h2>
+  <input type="text" id="mobile" placeholder="10 digit mobile">
+  <div class="password-box">
+    <input type="password" id="password" placeholder="Password">
+    <span class="eye" onclick="togglePass()">👁️</span>
+  </div>
+  <button onclick="login()">Login</button>
+  <p style="font-size:12px;">Password: min 8 chars (letter + number + symbol)</p>
 </div>
 
+<!-- ASK AI -->
+<div class="card" id="ask">
+  <h2>Ask AI 🤖</h2>
+  <textarea id="question" rows="3" placeholder="Yahan apna sawal likho..."></textarea>
+  <button onclick="askAI()">Ask AI</button>
+  <p id="answer" style="margin-top:10px;font-size:14px;"></p>
+</div>
+
+<footer>
+  © <span id="year"></span> AI Saathi | Created by <b>Mr. Somanath Mishra</b>
+</footer>
+
 <script>
+document.getElementById("year").innerText = new Date().getFullYear();
+
+function togglePass(){
+  let p = document.getElementById("password");
+  p.type = p.type === "password" ? "text" : "password";
+}
+
 function login(){
-  let m = mobile.value.trim();
-  let p = pass.value.trim();
-  let users = JSON.parse(localStorage.getItem("users") || "{}");
+  let m = document.getElementById("mobile").value;
+  let p = document.getElementById("password").value;
 
-  if(!users[m]){ alert("User not found"); return; }
-  if(users[m] !== p){ alert("Wrong password"); return; }
+  if(!/^[0-9]{10}$/.test(m)){
+    alert("Mobile must be 10 digits");
+    return;
+  }
+  if(p.length < 8){
+    alert("Password minimum 8 characters");
+    return;
+  }
+  alert("Login successful (demo)");
+}
 
-  localStorage.setItem("loggedIn","yes");
-  location.href="dashboard.html";
+function askAI(){
+  let q = document.getElementById("question").value;
+  if(q.trim() === ""){
+    alert("Please write a question");
+    return;
+  }
+  document.getElementById("answer").innerText =
+    "🤖 AI Saathi: Ye demo AI reply hai. Future me ChatGPT connect hoga.";
 }
 </script>
+
 </body>
 </html>
