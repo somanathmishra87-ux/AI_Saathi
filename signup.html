@@ -10,6 +10,7 @@ body{
   font-family:Arial;
   background:#0b5ed7;
   color:#fff;
+  padding-bottom:60px;
 }
 
 header{
@@ -70,8 +71,13 @@ button{
 }
 
 .footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#0a3d91;
   text-align:center;
-  margin-top:15px;
+  padding:10px;
   font-size:13px;
 }
 </style>
@@ -83,7 +89,7 @@ button{
 
 <div class="container">
 
-<img src="robot-ai.jpg" class="robot">
+<img src="robot-ai.jpg" class="robot" alt="AI Robot">
 
 <input type="text" placeholder="Full Name">
 <input type="tel" placeholder="10 digit mobile">
@@ -95,11 +101,15 @@ button{
 
 <button onclick="signup()">Create Account</button>
 
-<div class="footer">
+<p style="text-align:center;margin-top:10px;">
 Already have account?
 <a href="index.html" style="color:#ffc107;text-decoration:none;">Login</a>
+</p>
+
 </div>
 
+<div class="footer">
+© 2025 AI Saathi | Created by <b>Mr. Somanath Mishra</b>
 </div>
 
 <script>
