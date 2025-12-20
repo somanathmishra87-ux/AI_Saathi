@@ -1,99 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>AI Saathi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>Login - AI Saathi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-*{box-sizing:border-box;font-family:Arial}
-body{
-  margin:0;
-  background:#0b5ed7;
-  color:#fff;
-}
-
-/* HEADER */
+body{margin:0;background:#0b5ed7;font-family:Arial;color:#fff}
 header{
+  background:#0a3d91;
+  padding:14px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  padding:12px 16px;
-  background:#0a3d91;
 }
-header .logo{
-  font-size:20px;
-  font-weight:bold;
-}
-header a{
-  color:#fff;
-  margin-left:12px;
-  text-decoration:none;
-  font-size:14px;
-}
+header a{color:#fff;text-decoration:none;margin-left:10px}
 
-/* HERO */
-.hero{
-  display:flex;
-  flex-wrap:wrap;
-}
-.hero img{
-  width:100%;
-  max-height:300px;
-  object-fit:cover;
-}
-.hero-text{
-  padding:20px;
-  background:#0b5ed7;
-}
-
-/* LOGIN BOX */
-.login-box{
+.box{
   max-width:360px;
-  margin:20px auto;
+  margin:40px auto;
   background:#071a3a;
   padding:20px;
   border-radius:12px;
 }
-.login-box h2{text-align:center}
-input{
+input,button{
   width:100%;
   padding:12px;
   margin:10px 0;
   border-radius:6px;
   border:none;
 }
-button{
+button{background:#ffc107;font-weight:bold}
+img{
   width:100%;
-  padding:12px;
-  background:#ffc107;
-  border:none;
-  font-weight:bold;
-  border-radius:6px;
+  max-height:260px;
+  object-fit:cover;
 }
-.link{text-align:center;margin-top:10px}
-
-/* ASK AI */
-.card{
-  background:#072b5f;
-  margin:16px;
-  padding:16px;
-  border-radius:12px;
-}
-textarea{
-  width:100%;
-  height:80px;
-  padding:10px;
-  border-radius:6px;
-}
-
-/* FOOTER */
 footer{
   position:fixed;
   bottom:0;
   width:100%;
-  background:#06204a;
   text-align:center;
+  background:#06204a;
   padding:8px;
   font-size:13px;
 }
@@ -103,47 +48,20 @@ footer{
 <body>
 
 <header>
-  <div class="logo">✨ AI Saathi</div>
+  <b>✨ AI Saathi</b>
   <div>
     <a href="index.html">Login</a>
     <a href="signup.html">Sign Up</a>
-    <a href="#ask">Ask AI</a>
   </div>
 </header>
 
-<div class="hero">
-  <img src="robot-ai.jpg" alt="AI Robot">
-</div>
+<img src="robot-ai.jpg">
 
-<div class="login-box">
-  <h2>Login</h2>
-  <input type="text" id="mobile" placeholder="10 digit mobile">
-  <input type="password" id="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <div class="link">
-    New user? <a href="signup.html" style="color:#ffc107">Sign up</a>
-  </div>
-</div>
-
-<div class="card">
-  <h3>AI kya hai?</h3>
-  <p>Artificial Intelligence computer ko insaan jaise sochna aur decision lena sikhata hai.</p>
-</div>
-
-<div class="card">
-  <h3>AI se kya kar sakte hai?</h3>
-  <ul>
-    <li>Resume banana</li>
-    <li>Study help</li>
-    <li>Job preparation</li>
-    <li>Business ideas</li>
-  </ul>
-</div>
-
-<div class="card" id="ask">
-  <h3>Ask AI 🤖</h3>
-  <textarea placeholder="Yahan apna sawal likho..."></textarea>
-  <button onclick="askAI()">Ask AI</button>
+<div class="box">
+<h2>Login</h2>
+<input placeholder="10 digit mobile">
+<input type="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
 
 <footer>
@@ -152,11 +70,8 @@ footer{
 
 <script>
 function login(){
-  alert("Login successful (demo)");
+  alert("Login successful");
   window.location.href="dashboard.html";
-}
-function askAI(){
-  alert("AI reply demo: Ye feature future me ChatGPT API se connect hoga.");
 }
 </script>
 
