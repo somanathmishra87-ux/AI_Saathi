@@ -1,81 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>AI Saathi - Signup</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body{
-      margin:0;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      background:#0b5ed7;
-      font-family:Arial;
-    }
-    .box{
-      background:#002b64;
-      color:#fff;
-      padding:25px;
-      width:300px;
-      border-radius:12px;
-      text-align:center;
-    }
-    input,button{
-      width:100%;
-      padding:10px;
-      margin:8px 0;
-      border-radius:6px;
-      border:none;
-    }
-    button{
-      background:#0b5ed7;
-      color:#fff;
-      font-size:15px;
-    }
-    a{color:#9ec5ff;text-decoration:none;}
-  </style>
+<meta charset="UTF-8">
+<title>AI Saathi | Sign Up</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#0a3d91;
+    font-family:Arial, sans-serif;
+    color:#fff;
+}
+
+.card{
+    background:rgba(0,0,0,0.6);
+    padding:25px;
+    width:320px;
+    border-radius:12px;
+    text-align:center;
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box span{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#555;
+}
+
+button{
+    width:100%;
+    padding:10px;
+    margin-top:12px;
+    background:#0b5ed7;
+    border:none;
+    border-radius:6px;
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#094db1;
+}
+
+a{
+    color:#9ecbff;
+    text-decoration:none;
+    font-size:14px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="box">
-  <h2>Sign Up</h2>
-  <input id="mobile" placeholder="10 digit mobile">
-  <input id="pass" type="password" placeholder="Password">
-  <button onclick="signup()">Create Account</button>
-  <p style="font-size:13px;">
-    <a href="index.html">Already have account? Login</a>
-  </p>
+<div class="card">
+    <h2>Create Account</h2>
+
+    <input id="name" placeholder="Full Name">
+
+    <input id="mobile" placeholder="10 digit mobile">
+
+    <div class="password-box">
+        <input id="pass" type="password" placeholder="Password">
+        <span onclick="togglePass()">👁️</span>
+    </div>
+
+    <button onclick="signup()">Sign Up</button>
+
+    <p style="margin-top:10px;">
+        Already have an account?
+        <a href="index.html">Login</a>
+    </p>
 </div>
 
 <script>
+function togglePass(){
+    let p = document.getElementById("pass");
+    p.type = p.type === "password" ? "text" : "password";
+}
+
 function signup(){
-  let m = mobile.value.trim();
-  let p = pass.value.trim();
+    let name = document.getElementById("name").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let pass = document.getElementById("pass").value.trim();
 
-  if(!/^\d{10}$/.test(m)){
-    alert("Mobile must be 10 digits");
-    return;
-  }
+    if(name === ""){
+        alert("Enter your name");
+        return;
+    }
 
-  if(p.length < 8){
-    alert("Password minimum 8 characters");
-    return;
-  }
+    if(!/^[0-9]{10}$/.test(mobile)){
+        alert("Mobile must be 10 digits");
+        return;
+    }
 
-  let users = JSON.parse(localStorage.getItem("users") || "{}");
+    if(pass.length < 8){
+        alert("Password minimum 8 characters");
+        return;
+    }
 
-  if(users[m]){
-    alert("User already exists");
-    return;
-  }
+    let users = JSON.parse(localStorage.getItem("users") || "{}");
 
-  users[m] = p;
-  localStorage.setItem("users", JSON.stringify(users));
+    if(users[mobile]){
+        alert("User already exists");
+        return;
+    }
 
-  alert("Signup successful. Now login.");
-  location.href="index.html";
+    users[mobile] = { name: name, password: pass };
+    localStorage.setItem("users", JSON.stringify(users));
+
+    alert("Signup successful! Please login.");
+    location.href = "index.html";
 }
 </script>
 
