@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Saathi - Login</title>
+<meta charset="UTF-8">
+<title>AI Saathi</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -11,32 +12,81 @@ body{
   background:#0b5ed7;
   color:#fff;
 }
-.box{
-  max-width:320px;
-  margin:80px auto;
-  background:#061a33;
-  padding:25px;
-  border-radius:12px;
-  text-align:center;
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  background:#0a3d91;
 }
-input,button{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:6px;
-  border:none;
-}
-button{
-  background:#ffc107;
+
+.logo{
+  font-size:20px;
   font-weight:bold;
 }
-a{color:#ffc107;text-decoration:none}
+
+nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:15px;
+  font-weight:500;
+}
+
+/* HERO */
+.hero{
+  display:flex;
+  height:calc(100vh - 120px);
+}
+
+.hero-left{
+  flex:1;
+  background:url("robot-ai.jpg") center/cover no-repeat;
+}
+
+.hero-right{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.card{
+  background:rgba(0,0,0,0.6);
+  padding:30px;
+  border-radius:12px;
+  max-width:320px;
+  text-align:center;
+}
+
+.card h2{
+  margin-bottom:10px;
+}
+
+.card p{
+  font-size:14px;
+  line-height:1.4;
+}
+
+.card a{
+  display:block;
+  margin-top:15px;
+  padding:10px;
+  background:#ffc107;
+  color:#000;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* FOOTER */
 footer{
   position:fixed;
   bottom:0;
   width:100%;
-  background:#0a3d91;
   text-align:center;
+  background:#0a3d91;
   padding:8px;
   font-size:13px;
 }
@@ -45,42 +95,33 @@ footer{
 
 <body>
 
-<div class="box">
-  <h2>AI Saathi</h2>
+<header>
+  <div class="logo">✨ AI Saathi</div>
+  <nav>
+    <a href="login.html">Login</a>
+    <a href="signup.html">Sign Up</a>
+    <a href="dashboard.html">Ask AI</a>
+  </nav>
+</header>
 
-  <input id="mobile" placeholder="10 digit mobile">
-  <input id="pass" type="password" placeholder="Password">
+<div class="hero">
+  <div class="hero-left"></div>
 
-  <button onclick="login()">Login</button>
-
-  <p>New user? <a href="signup.html">Sign up</a></p>
+  <div class="hero-right">
+    <div class="card">
+      <h2>AI Saathi</h2>
+      <p>
+        AI ka gyaan, sabke liye.<br>
+        Resume, study, business aur sawalon ke jawab.
+      </p>
+      <a href="login.html">Get Started →</a>
+    </div>
+  </div>
 </div>
 
 <footer>
-© 2025 AI Saathi | Created by Mr. Somanath Mishra
+  © 2025 AI Saathi | Created by Mr. Somanath Mishra
 </footer>
-
-<script>
-function login(){
-  let mobile = document.getElementById("mobile").value.trim();
-  let pass   = document.getElementById("pass").value.trim();
-
-  let users = JSON.parse(localStorage.getItem("users") || "{}");
-
-  if(!users[mobile]){
-    alert("User not found. Please signup.");
-    return;
-  }
-
-  if(users[mobile].password !== pass){
-    alert("Wrong password");
-    return;
-  }
-
-  alert("Login successful");
-  location.href="dashboard.html";
-}
-</script>
 
 </body>
 </html>
