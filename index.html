@@ -1,139 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI Saathi - Login</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body{
-      margin:0;
-      font-family:Arial;
-      height:100vh;
-      display:flex;
-      flex-direction:column;
-    }
-    header{
-      height:50px;
-      background:#0a3d91;
-      color:#fff;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:0 15px;
-    }
-    header a{
-      color:#fff;
-      margin-left:10px;
-      text-decoration:none;
-      font-size:14px;
-    }
-    .main{
-      flex:1;
-      display:flex;
-    }
-    .left{
-      flex:1;
-      background:url("robot-ai.jpg") center/cover no-repeat;
-    }
-    .right{
-      flex:1;
-      background:#0b5ed7;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .card{
-      background:rgba(0,0,0,0.75);
-      color:#fff;
-      padding:25px;
-      width:300px;
-      border-radius:12px;
-      text-align:center;
-    }
-    input,button{
-      width:100%;
-      padding:10px;
-      margin:8px 0;
-      border-radius:6px;
-      border:none;
-    }
-    button{
-      background:#0b5ed7;
-      color:#fff;
-      font-size:15px;
-      cursor:pointer;
-    }
-    footer{
-      height:35px;
-      background:#0a3d91;
-      color:#fff;
-      text-align:center;
-      font-size:13px;
-      padding-top:8px;
-    }
-    @media(max-width:768px){
-      .main{flex-direction:column;}
-      .left{height:35vh;}
-      .right{height:65vh;}
-    }
-  </style>
+<title>AI Saathi - Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  font-family:Arial;
+}
+.left{
+  flex:1;
+  background:url('robot-ai.jpg') center/cover no-repeat;
+}
+.right{
+  flex:1;
+  background:#0b5ed7;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card{
+  background:rgba(0,0,0,.75);
+  padding:25px;
+  width:300px;
+  border-radius:12px;
+  color:#fff;
+}
+input,button{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:6px;
+  border:none;
+}
+button{
+  background:#ffc107;
+  font-weight:bold;
+  cursor:pointer;
+}
+a{color:#ffd}
+</style>
 </head>
 
 <body>
+<div class="left"></div>
 
-<header>
-  <div>✨ AI Saathi</div>
-  <div>
-    <a href="index.html">Login</a>
-    <a href="signup.html">Sign Up</a>
-  </div>
-</header>
-
-<div class="main">
-  <div class="left"></div>
-
-  <div class="right">
-    <div class="card">
-      <h2>AI Saathi</h2>
-      <input id="mobile" placeholder="10 digit mobile">
-      <input id="pass" type="password" placeholder="Password">
-      <button onclick="login()">Login</button>
-      <p style="font-size:12px;">
-        Password: min 8 chars (letter + number + symbol)
-      </p>
-    </div>
+<div class="right">
+  <div class="card">
+    <h2>AI Saathi</h2>
+    <input id="mobile" placeholder="10 digit mobile">
+    <input id="pass" type="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p>New user? <a href="signup.html">Sign up</a></p>
   </div>
 </div>
 
-<footer>
-  Created by: Mr. Somanath Mishra
-</footer>
-
 <script>
 function login(){
-  let m = document.getElementById("mobile").value.trim();
-  let p = document.getElementById("pass").value.trim();
-
-  if(!/^\d{10}$/.test(m)){
-    alert("Mobile must be 10 digits");
-    return;
-  }
-
+  let m = mobile.value.trim();
+  let p = pass.value.trim();
   let users = JSON.parse(localStorage.getItem("users") || "{}");
 
-  if(!users[m]){
-    alert("User not found. Please signup.");
-    return;
-  }
+  if(!users[m]){ alert("User not found"); return; }
+  if(users[m] !== p){ alert("Wrong password"); return; }
 
-  if(users[m] !== p){
-    alert("Invalid password");
-    return;
-  }
-
+  localStorage.setItem("loggedIn","yes");
   location.href="dashboard.html";
 }
 </script>
-
 </body>
 </html>
