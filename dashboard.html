@@ -1,97 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>AI Saathi Dashboard</title>
+<title>Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body{margin:0;font-family:Arial;background:#0b5ed7;color:#fff;}
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b5ed7;
+  color:#fff;
+}
 header{
   background:#0a3d91;
-  padding:15px;
+  padding:12px;
   text-align:center;
-  font-size:20px;
-  position:relative;
 }
-.logout{
-  position:absolute;
-  right:15px;
-  top:12px;
-  background:#ffc107;
-  padding:6px 10px;
-  border-radius:5px;
-  cursor:pointer;
-  color:#000;
+.content{
+  padding:20px;
 }
 .card{
-  background:#08306b;
-  margin:20px;
+  background:#061a33;
   padding:20px;
   border-radius:12px;
 }
-textarea{
+footer{
+  position:fixed;
+  bottom:0;
   width:100%;
-  height:80px;
-  padding:10px;
-  border-radius:6px;
-}
-button{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  background:#ffc107;
-  border:none;
-  font-weight:bold;
+  background:#0a3d91;
+  text-align:center;
+  padding:8px;
+  font-size:13px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-Welcome to AI Saathi 🚀
-<span class="logout" onclick="logout()">Logout</span>
-</header>
+<header>Welcome to AI Saathi 🚀</header>
 
-<div class="card">
-<h3>AI kya hai?</h3>
-<p>AI computer ko insan jaise sochna sikhata hai.</p>
+<div class="content">
+  <div class="card">
+    <h3>Ask AI 🤖</h3>
+    <textarea placeholder="Yahan apna sawal likho..." style="width:100%;height:80px"></textarea>
+    <button style="margin-top:10px;width:100%">Ask AI</button>
+  </div>
 </div>
 
-<div class="card">
-<h3>AI se kya kar sakte hai?</h3>
-<ul>
-<li>Resume banana</li>
-<li>Study help</li>
-<li>Job preparation</li>
-<li>Business ideas</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Ask AI 🤖</h3>
-<textarea id="question" placeholder="Apna sawal likho..."></textarea>
-<button onclick="askAI()">Ask AI</button>
-<p id="reply"></p>
-</div>
-
-<script>
-if(localStorage.getItem("loggedIn")!=="yes"){
- location.href="index.html";
-}
-
-function logout(){
- localStorage.removeItem("loggedIn");
- location.href="index.html";
-}
-
-function askAI(){
- let q=document.getElementById("question").value;
- if(q===""){alert("Question likho");return;}
- document.getElementById("reply").innerHTML =
- "🤖 AI Saathi:<br>Aapne pucha: <b>"+q+
- "</b><br><br>Ye demo AI reply hai. Real ChatGPT API se connect kiya ja sakta hai.";
-}
-</script>
+<footer>
+© 2025 AI Saathi | Created by Mr. Somanath Mishra
+</footer>
 
 </body>
 </html>
