@@ -3,35 +3,74 @@
 <head>
 <title>AI Saathi Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
-body{margin:0;background:#0b5ed7;color:#fff;font-family:Arial}
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b5ed7;
+  color:#fff;
+}
+
 header{
   background:#0a3d91;
   padding:14px;
-  text-align:center;
-  font-size:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
-.card{
-  background:#072b5f;
-  margin:16px;
-  padding:16px;
-  border-radius:12px;
+
+header span{
+  font-size:18px;
+  font-weight:bold;
 }
-textarea{
-  width:100%;
-  height:80px;
-  border-radius:6px;
-  padding:10px;
-}
-button{
-  width:100%;
-  padding:12px;
+
+.logout{
   background:#ffc107;
   border:none;
-  font-weight:bold;
+  padding:8px 14px;
   border-radius:6px;
+  font-weight:bold;
+  cursor:pointer;
 }
+
+.content{
+  padding:20px;
+  padding-bottom:80px;
+}
+
+.card{
+  background:#071a3a;
+  padding:18px;
+  border-radius:12px;
+  margin-bottom:18px;
+}
+
+textarea{
+  width:100%;
+  height:100px;
+  border-radius:8px;
+  border:none;
+  padding:10px;
+  font-size:15px;
+}
+
+.askbtn{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  background:#ffc107;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  font-size:16px;
+}
+
 footer{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:#0a3d91;
   text-align:center;
   padding:10px;
   font-size:13px;
@@ -41,27 +80,61 @@ footer{
 
 <body>
 
-<header>Welcome to AI Saathi 🚀</header>
+<header>
+  <span>✨ AI Saathi</span>
+  <button class="logout" onclick="logout()">Logout</button>
+</header>
 
+<div class="content">
+
+<!-- INTRODUCTION -->
 <div class="card">
-<h3>AI kya hai?</h3>
-<p>Artificial Intelligence computer ko insaan jaise sochna aur decision lena sikhata hai.</p>
+<h3>AI ka Introduction</h3>
+<p>
+Artificial Intelligence (AI) ek aisi technology hai jisme computer ya machine ko
+insaan ki tarah sochne, samajhne aur decision lene ki ability di jaati hai.
+AI data se seekhta hai aur apne experience ke base par behtar result deta hai.
+</p>
 </div>
 
+<!-- HISTORY -->
+<div class="card">
+<h3>AI kisne aur kab banaya?</h3>
+<p>
+Artificial Intelligence shabd pehli baar <b>1956</b> me use kiya gaya tha.
+Is concept ko introduce karne wale scientist ka naam tha
+<b>John McCarthy</b>.  
+Unhone AI ko ek aisi science bataya jisme machine ko intelligent banaya ja sakta hai.
+</p>
+</div>
+
+<!-- WHAT IS AI -->
+<div class="card">
+<h3>AI kya hai?</h3>
+<p>
+AI computer ko insan jaise sochna, samajhna aur decision lena sikhata hai.
+Jaise voice assistant, face recognition, recommendation system etc.
+</p>
+</div>
+
+<!-- USES -->
 <div class="card">
 <h3>AI se kya kar sakte hai?</h3>
 <ul>
 <li>Resume banana</li>
-<li>Study help</li>
-<li>Job preparation</li>
-<li>Business ideas</li>
+<li>Study aur homework help</li>
+<li>Job interview preparation</li>
+<li>Business ideas aur planning</li>
 </ul>
 </div>
 
+<!-- ASK AI -->
 <div class="card">
 <h3>Ask AI 🤖</h3>
 <textarea placeholder="Yahan apna sawal likho..."></textarea>
-<button onclick="ask()">Ask AI</button>
+<button class="askbtn" onclick="demo()">Ask AI</button>
+</div>
+
 </div>
 
 <footer>
@@ -69,8 +142,12 @@ footer{
 </footer>
 
 <script>
-function ask(){
-  alert("AI reply demo. Future me ChatGPT connect hoga.");
+function logout(){
+  window.location.href="index.html";
+}
+
+function demo(){
+  alert("AI reply (demo mode)");
 }
 </script>
 
